@@ -1,0 +1,121 @@
+:host {
+  display: block;
+}
+
+.login-page {
+  min-height: 100vh;
+  padding-top: 88px;
+  background:
+    radial-gradient(circle at top left, rgba(22, 160, 133, 0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(30, 136, 229, 0.14), transparent 34%),
+    #f7fbfa;
+}
+
+.auth-section {
+  min-height: calc(100vh - 88px);
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.auth-card {
+  padding: 2rem;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 28px 80px rgba(18, 60, 74, 0.14);
+  border: 1px solid rgba(18, 60, 74, 0.08);
+}
+
+.auth-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 1rem;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-weight: 850;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+  box-shadow: 0 12px 28px rgba(30, 136, 229, 0.25);
+}
+
+.auth-card h1 {
+  font-size: 1.8rem;
+  font-weight: 850;
+  color: #123c4a;
+  letter-spacing: -0.04em;
+}
+
+.auth-card p {
+  color: #6d8791;
+  line-height: 1.7;
+}
+
+.form-label {
+  color: #123c4a;
+  font-weight: 700;
+}
+
+.form-control {
+  min-height: 52px;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 60, 74, 0.12);
+  background: #f9fcfb;
+  color: #123c4a;
+}
+
+.form-control:focus {
+  border-color: #16a085;
+  box-shadow: 0 0 0 0.22rem rgba(22, 160, 133, 0.13);
+}
+
+.form-check-label {
+  color: #5e7883;
+}
+
+.form-check-input:checked {
+  background-color: #16a085;
+  border-color: #16a085;
+}
+
+.auth-link,
+.auth-footer a {
+  color: #0f766e;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.auth-link:hover,
+.auth-footer a:hover {
+  color: #1e88e5;
+}
+
+.btn-urban {
+  min-height: 52px;
+  border: none;
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 850;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+  box-shadow: 0 14px 30px rgba(30, 136, 229, 0.22);
+}
+
+.btn-urban:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.auth-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(18, 60, 74, 0.08);
+  text-align: center;
+  color: #6d8791;
+}
+
+@media (max-width: 575px) {
+  .auth-card {
+    padding: 1.5rem;
+    border-radius: 26px;
+  }
+}

@@ -1,0 +1,202 @@
+<main class="dashboard-page">
+  <div class="container">
+    <section class="dashboard-header">
+      <div>
+        <span class="eyebrow">Painel do usuário</span>
+        <h1>Olá, Mariana 👋</h1>
+        <p>
+          Continue evoluindo nas suas missões e acompanhe seu impacto na cidade.
+        </p>
+      </div>
+
+      <a class="btn btn-urban" routerLink="/missions">
+        Ver missões
+      </a>
+    </section>
+
+    <section class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="stat-card primary-card">
+          <span class="card-label">XP acumulado</span>
+          <h2>4.850</h2>
+          <p>Nível 8 · Mobilidade consciente</p>
+
+          <div class="progress">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              style="width: 68%"
+              aria-valuenow="68"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+
+          <small>680 XP para o próximo nível</small>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="stat-card">
+          <span class="card-label">Missões concluídas</span>
+          <h2>23</h2>
+          <p>5 missões finalizadas nesta semana</p>
+          <div class="metric-icon">✅</div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="stat-card">
+          <span class="card-label">Impacto estimado</span>
+          <h2>18,6 kg</h2>
+          <p>CO₂ evitado com rotas mais sustentáveis</p>
+          <div class="metric-icon">🌱</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row g-4 mt-1">
+      <div class="col-lg-7">
+        <div class="content-card">
+          <div class="section-title">
+            <div>
+              <h2>Missão em destaque</h2>
+              <p>Conclua hoje para ganhar XP extra.</p>
+            </div>
+
+            <span class="xp-badge">+320 XP</span>
+          </div>
+
+          <div class="highlight-mission">
+            <div class="mission-icon">🚇</div>
+
+            <div class="flex-grow-1">
+              <h3>Use transporte público em horário de pico</h3>
+              <p>
+                Registre um deslocamento usando metrô, trem ou ônibus em vez de
+                veículo individual.
+              </p>
+
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 45%"
+                  aria-valuenow="45"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-2">
+                <small>Progresso atual</small>
+                <small>45%</small>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-urban mt-4">
+            Continuar missão
+          </button>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="content-card">
+          <div class="section-title">
+            <div>
+              <h2>Atividade semanal</h2>
+              <p>XP conquistado nos últimos dias.</p>
+            </div>
+          </div>
+
+          <div class="weekly-chart">
+            <div class="chart-bar" style="height: 45%">
+              <span>Seg</span>
+            </div>
+
+            <div class="chart-bar" style="height: 68%">
+              <span>Ter</span>
+            </div>
+
+            <div class="chart-bar" style="height: 38%">
+              <span>Qua</span>
+            </div>
+
+            <div class="chart-bar" style="height: 82%">
+              <span>Qui</span>
+            </div>
+
+            <div class="chart-bar" style="height: 57%">
+              <span>Sex</span>
+            </div>
+
+            <div class="chart-bar" style="height: 74%">
+              <span>Sáb</span>
+            </div>
+
+            <div class="chart-bar" style="height: 50%">
+              <span>Dom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row g-4 mt-1">
+      <div class="col-lg-6">
+        <div class="content-card">
+          <h2>Próximas conquistas</h2>
+
+          <div class="achievement-list">
+            <div class="achievement-item">
+              <span>🏅</span>
+              <div>
+                <strong>Explorador de ciclovias</strong>
+                <small>Complete 5 trajetos de bicicleta.</small>
+              </div>
+            </div>
+
+            <div class="achievement-item">
+              <span>🌍</span>
+              <div>
+                <strong>Semana de baixo carbono</strong>
+                <small>Evite veículo individual por 7 dias.</small>
+              </div>
+            </div>
+
+            <div class="achievement-item">
+              <span>🚶</span>
+              <div>
+                <strong>Caminhada inteligente</strong>
+                <small>Faça 10 deslocamentos curtos a pé.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="content-card">
+          <h2>Resumo de recompensas</h2>
+
+          <div class="reward-summary">
+            <div>
+              <span>Pontos disponíveis</span>
+              <strong>1.240</strong>
+            </div>
+
+            <a class="btn btn-outline-urban" routerLink="/rewards">
+              Resgatar
+            </a>
+          </div>
+
+          <p class="summary-note">
+            Você já pode resgatar cupons de bike compartilhada, créditos de
+            transporte e benefícios em parceiros sustentáveis.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
