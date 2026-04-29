@@ -1,0 +1,249 @@
+:host {
+  display: block;
+}
+
+.settings-page {
+  min-height: 100vh;
+  padding: 112px 0 4rem;
+  background:
+    radial-gradient(circle at top left, rgba(22, 160, 133, 0.13), transparent 28%),
+    #f7fbfa;
+  color: #123c4a;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: 0.42rem 0.8rem;
+  border-radius: 999px;
+  color: #0f766e;
+  font-weight: 800;
+  background: rgba(22, 160, 133, 0.12);
+  margin-bottom: 0.8rem;
+}
+
+.page-header h1 {
+  max-width: 760px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -0.05em;
+}
+
+.page-header p {
+  max-width: 680px;
+  color: #6d8791;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.profile-card,
+.settings-card {
+  padding: 1.6rem;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(18, 60, 74, 0.08);
+  border: 1px solid rgba(18, 60, 74, 0.06);
+}
+
+.profile-card {
+  position: sticky;
+  top: 105px;
+  text-align: center;
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 1.7rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+  box-shadow: 0 16px 35px rgba(30, 136, 229, 0.24);
+}
+
+.profile-card h2,
+.settings-card h2 {
+  color: #123c4a;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+}
+
+.profile-card p,
+.settings-card p {
+  color: #6d8791;
+}
+
+.profile-progress {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.profile-progress small {
+  color: #6d8791;
+  font-weight: 700;
+}
+
+.progress {
+  height: 10px;
+  border-radius: 999px;
+  background: #e2eeee;
+  margin-top: 0.5rem;
+}
+
+.progress-bar {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #16a085, #1e88e5);
+}
+
+.form-label {
+  color: #123c4a;
+  font-weight: 700;
+}
+
+.form-control,
+.form-select {
+  min-height: 52px;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 60, 74, 0.12);
+  background-color: #f9fcfb;
+  color: #123c4a;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #16a085;
+  box-shadow: 0 0 0 0.22rem rgba(22, 160, 133, 0.13);
+}
+
+.btn-urban {
+  border: none;
+  color: #ffffff;
+  font-weight: 850;
+  border-radius: 999px;
+  padding: 0.75rem 1.3rem;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+  box-shadow: 0 14px 30px rgba(30, 136, 229, 0.22);
+}
+
+.btn-urban:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-outline-urban {
+  color: #0f766e;
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  border-radius: 999px;
+  font-weight: 800;
+  background: #ffffff;
+}
+
+.btn-outline-urban:hover {
+  color: #ffffff;
+  background: #0f766e;
+}
+
+.preference-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+  margin-top: 1.2rem;
+}
+
+.preference-option {
+  cursor: pointer;
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 0.45rem;
+  min-height: 130px;
+  border-radius: 24px;
+  background: #f7fbfa;
+  border: 1px solid rgba(18, 60, 74, 0.08);
+  transition: all 0.2s ease;
+}
+
+.preference-option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 35px rgba(18, 60, 74, 0.08);
+}
+
+.preference-option input {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  accent-color: #16a085;
+}
+
+.preference-option span {
+  font-size: 1.7rem;
+}
+
+.preference-option strong {
+  color: #123c4a;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(18, 60, 74, 0.08);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.setting-row strong {
+  display: block;
+  color: #123c4a;
+}
+
+.setting-row small {
+  display: block;
+  color: #6d8791;
+}
+
+.form-switch .form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #16a085;
+  border-color: #16a085;
+}
+
+@media (max-width: 991px) {
+  .profile-card {
+    position: static;
+  }
+
+  .preference-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .setting-row {
+    align-items: flex-start;
+  }
+
+  .preference-grid {
+    grid-template-columns: 1fr;
+  }
+}

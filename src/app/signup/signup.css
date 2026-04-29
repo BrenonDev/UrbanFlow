@@ -1,0 +1,157 @@
+:host {
+  display: block;
+}
+
+.signup-page {
+  min-height: 100vh;
+  padding-top: 88px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(22, 160, 133, 0.16), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(30, 136, 229, 0.13), transparent 28%),
+    #f7fbfa;
+}
+
+.auth-section {
+  padding: 4rem 0;
+}
+
+.signup-info {
+  color: #123c4a;
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  color: #0f766e;
+  font-weight: 800;
+  background: rgba(22, 160, 133, 0.12);
+  margin-bottom: 1rem;
+}
+
+.signup-info h1 {
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  line-height: 1.04;
+  font-weight: 850;
+  letter-spacing: -0.06em;
+}
+
+.signup-info p {
+  color: #5e7883;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+.benefit-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.benefit-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 35px rgba(18, 60, 74, 0.08);
+}
+
+.benefit-item span {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-weight: 900;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+}
+
+.benefit-item strong {
+  display: block;
+  color: #123c4a;
+}
+
+.benefit-item small {
+  color: #6d8791;
+}
+
+.auth-card {
+  padding: 2rem;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 28px 80px rgba(18, 60, 74, 0.14);
+  border: 1px solid rgba(18, 60, 74, 0.08);
+}
+
+.auth-card h2 {
+  color: #123c4a;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.auth-card p {
+  color: #6d8791;
+}
+
+.form-label {
+  color: #123c4a;
+  font-weight: 700;
+}
+
+.form-control {
+  min-height: 52px;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 60, 74, 0.12);
+  background: #f9fcfb;
+}
+
+.form-control:focus {
+  border-color: #16a085;
+  box-shadow: 0 0 0 0.22rem rgba(22, 160, 133, 0.13);
+}
+
+.form-check-label {
+  color: #5e7883;
+}
+
+.form-check-input:checked {
+  background-color: #16a085;
+  border-color: #16a085;
+}
+
+.btn-urban {
+  min-height: 52px;
+  border: none;
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 850;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+  box-shadow: 0 14px 30px rgba(30, 136, 229, 0.22);
+}
+
+.btn-urban:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.auth-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(18, 60, 74, 0.08);
+  text-align: center;
+  color: #6d8791;
+}
+
+.auth-footer a {
+  color: #0f766e;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  color: #1e88e5;
+}
