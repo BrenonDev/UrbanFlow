@@ -84,6 +84,33 @@
   box-shadow: none !important;
 }
 
+/* User Info */
+.user-info {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(22, 160, 133, 0.08);
+  border: 1px solid rgba(22, 160, 133, 0.15);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #16a085, #1e88e5);
+}
+
+.user-name {
+  color: #0f766e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 @media (max-width: 991px) {
   .navbar-collapse {
     padding-top: 1rem;
@@ -91,5 +118,9 @@
 
   .nav-link {
     padding-left: 1rem !important;
+  }
+
+  .user-info {
+    margin-top: 0.5rem;
   }
 }

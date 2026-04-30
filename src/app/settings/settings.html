@@ -11,161 +11,216 @@
       </div>
     </section>
 
-    <section class="row g-4">
-      <div class="col-lg-4">
-        <aside class="profile-card">
-          <div class="avatar">MS</div>
+    @let user = authService.currentUser();
+    @if (user) {
+      <section class="row g-4">
+        <div class="col-lg-4">
+          <aside class="profile-card">
+            <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
 
-          <h2>Mariana Silva</h2>
-          <p>Mobilidade consciente · Nível 8</p>
+            <h2>{{ user.name }}</h2>
+            <p>Mobilidade consciente · Nível {{ user.level || 1 }}</p>
 
-          <div class="profile-progress">
-            <div class="d-flex justify-content-between">
-              <small>Progresso do nível</small>
-              <small>68%</small>
-            </div>
-
-            <div class="progress">
-              <div
-                class="progress-bar"
-                role="progressbar"
-                style="width: 68%"
-                aria-valuenow="68"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-          </div>
-
-          <a class="btn btn-outline-urban w-100 mt-4" routerLink="/dashboard">
-            Voltar ao dashboard
-          </a>
-        </aside>
-      </div>
-
-      <div class="col-lg-8">
-        <div class="settings-card">
-          <h2>Dados do perfil</h2>
-          <p>Atualize as informações principais da sua conta.</p>
-
-          <form>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="name" class="form-label">Nome completo</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  value="Mariana Silva"
-                />
+            <div class="profile-progress">
+              <div class="d-flex justify-content-between">
+                <small>Pontos acumulados</small>
+                <small>{{ user.points || 0 }}</small>
               </div>
 
-              <div class="col-md-6">
-                <label for="email" class="form-label">E-mail</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  value="mariana@email.com"
-                />
-              </div>
-
-              <div class="col-md-6">
-                <label for="city" class="form-label">Cidade</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="city"
-                  value="São Paulo"
-                />
-              </div>
-
-              <div class="col-md-6">
-                <label for="goal" class="form-label">Objetivo principal</label>
-                <select class="form-select" id="goal">
-                  <option>Reduzir uso de carro</option>
-                  <option>Pedalar mais</option>
-                  <option>Usar transporte público</option>
-                  <option>Caminhar em trajetos curtos</option>
-                </select>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 68%"
+                  aria-valuenow="68"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
               </div>
             </div>
 
-            <button type="button" class="btn btn-urban mt-4">
-              Salvar alterações
-            </button>
-          </form>
+            <a class="btn btn-outline-urban w-100 mt-4" routerLink="/dashboard">
+              Voltar ao dashboard
+            </a>
+          </aside>
         </div>
 
-        <div class="settings-card mt-4">
-          <h2>Preferências de mobilidade</h2>
-          <p>Defina quais tipos de missões combinam melhor com sua rotina.</p>
+        <div class="col-lg-8">
+          @if (successMessage()) {
+            <div class="alert alert-success">
+              {{ successMessage() }}
+            </div>
+          }
 
-          <div class="preference-grid">
-            <label class="preference-option">
-              <input type="checkbox" checked />
-              <span>🚲</span>
-              <strong>Bicicleta</strong>
-            </label>
+          <div class="settings-card">
+            <h2>Dados do perfil</h2>
+            <p>Atualize as informações principais da sua conta.</p>
 
-            <label class="preference-option">
-              <input type="checkbox" checked />
-              <span>🚇</span>
-              <strong>Transporte público</strong>
-            </label>
+            <form (ngSubmit)="saveProfile()">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">Nome completo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="name"
+                    name="name"
+                  />
+                </div>
 
-            <label class="preference-option">
-              <input type="checkbox" checked />
-              <span>🚶</span>
-              <strong>Caminhada</strong>
-            </label>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    [(ngModel)]="email"
+                    name="email"
+                    disabled
+                  />
+                </div>
 
-            <label class="preference-option">
-              <input type="checkbox" />
-              <span>🤝</span>
-              <strong>Carona</strong>
-            </label>
+                <div class="col-md-6">
+                  <label for="city" class="form-label">Cidade</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    [(ngModel)]="city"
+                    name="city"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="goal" class="form-label">Objetivo principal</label>
+                  <select class="form-select" id="goal">
+                    <option>Reduzir uso de carro</option>
+                    <option>Pedalar mais</option>
+                    <option>Usar transporte público</option>
+                    <option>Caminhar em trajetos curtos</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-urban mt-4">
+                Salvar alterações
+              </button>
+            </form>
+          </div>
+
+          <div class="settings-card mt-4">
+            <h2>Preferências de mobilidade</h2>
+            <p>Defina quais tipos de missões combinam melhor com sua rotina.</p>
+
+            <div class="preference-grid">
+              <label class="preference-option">
+                <input type="checkbox" checked />
+                <span>🚲</span>
+                <strong>Bicicleta</strong>
+              </label>
+
+              <label class="preference-option">
+                <input type="checkbox" checked />
+                <span>🚇</span>
+                <strong>Transporte público</strong>
+              </label>
+
+              <label class="preference-option">
+                <input type="checkbox" checked />
+                <span>🚶</span>
+                <strong>Caminhada</strong>
+              </label>
+
+              <label class="preference-option">
+                <input type="checkbox" />
+                <span>🤝</span>
+                <strong>Carona</strong>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-card mt-4">
+            <h2>Notificações</h2>
+            <p>Escolha quais alertas deseja receber.</p>
+
+            <div class="setting-row">
+              <div>
+                <strong>Lembretes de missões</strong>
+                <small>Receba avisos sobre missões em andamento.</small>
+              </div>
+
+              <div class="form-check form-switch">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox"
+                  [(ngModel)]="notifications().missions"
+                  name="missions"
+                />
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <div>
+                <strong>Novas recompensas</strong>
+                <small>Seja avisado quando novos benefícios forem liberados.</small>
+              </div>
+
+              <div class="form-check form-switch">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox"
+                  [(ngModel)]="notifications().rewards"
+                  name="rewards"
+                />
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <div>
+                <strong>Notificações sociais</strong>
+                <small>Receba avisos sobre amigos e atividades.</small>
+              </div>
+
+              <div class="form-check form-switch">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox"
+                  [(ngModel)]="notifications().social"
+                  name="social"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-card mt-4 danger-zone">
+            <h2>Zona de risco</h2>
+            <p>Ações que não podem ser desfeitas.</p>
+
+            <div class="setting-row danger">
+              <div>
+                <strong>Exportar dados</strong>
+                <small>Baixe todos seus dados em formato JSON.</small>
+              </div>
+
+              <button type="button" class="btn btn-outline-secondary" (click)="exportData()">
+                Exportar
+              </button>
+            </div>
+
+            <div class="setting-row danger">
+              <div>
+                <strong>Sair da conta</strong>
+                <small>Você será desconectado da sua sessão.</small>
+              </div>
+
+              <button type="button" class="btn btn-outline-danger" (click)="logout()">
+                Sair
+              </button>
+            </div>
           </div>
         </div>
-
-        <div class="settings-card mt-4">
-          <h2>Notificações</h2>
-          <p>Escolha quais alertas deseja receber.</p>
-
-          <div class="setting-row">
-            <div>
-              <strong>Lembretes de missões</strong>
-              <small>Receba avisos sobre missões em andamento.</small>
-            </div>
-
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" checked />
-            </div>
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <strong>Novas recompensas</strong>
-              <small>Seja avisado quando novos benefícios forem liberados.</small>
-            </div>
-
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" checked />
-            </div>
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <strong>Resumo semanal</strong>
-              <small>Receba um resumo do seu XP e impacto ambiental.</small>
-            </div>
-
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    }
   </div>
-</main>
+<!-- Removido markup duplicado e fechamento extra de </main> -->

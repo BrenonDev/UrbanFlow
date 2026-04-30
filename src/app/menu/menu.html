@@ -18,52 +18,72 @@
     </button>
 
     <div class="collapse navbar-collapse" id="urbanFlowMenu">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/"
-            routerLinkActive="active-link"
-            [routerLinkActiveOptions]="{ exact: true }"
+      <!-- Menu de Navegação - Apenas quando autenticado -->
+      @if (authService.isAuthenticated()) {
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/dashboard"
+              routerLinkActive="active-link"
+            >
+              Dashboard
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/missions" routerLinkActive="active-link">
+              Missões
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/rewards" routerLinkActive="active-link">
+              Recompensas
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/settings" routerLinkActive="active-link">
+              Configurações
+            </a>
+          </li>
+        </ul>
+
+        <!-- Seção do Usuário - Quando autenticado -->
+        <div class="d-flex flex-column flex-lg-row gap-2 align-items-center ms-auto">
+          <div class="user-info d-flex align-items-center gap-2">
+            <span class="user-avatar">
+              @if (authService.currentUser()?.name) {
+                {{ authService.currentUser()!.name.charAt(0).toUpperCase() }}
+              }
+            </span>
+            <span class="user-name d-none d-lg-inline">{{ authService.currentUser()?.name }}</span>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-outline-urban"
+            (click)="logout()"
+            aria-label="Sair"
           >
-            Início
+            Sair
+          </button>
+        </div>
+      }
+
+      <!-- Botões de Autenticação - Quando não autenticado -->
+      @if (!authService.isAuthenticated()) {
+        <div class="d-flex flex-column flex-lg-row gap-2 ms-auto">
+          <a class="btn btn-outline-urban" routerLink="/login" routerLinkActive="active-auth">
+            Entrar
           </a>
-        </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active-link">
-            Dashboard
+          <a class="btn btn-urban" routerLink="/signup" routerLinkActive="active-auth">
+            Criar conta
           </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/missions" routerLinkActive="active-link">
-            Missões
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/rewards" routerLinkActive="active-link">
-            Recompensas
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/settings" routerLinkActive="active-link">
-            Configurações
-          </a>
-        </li>
-      </ul>
-
-      <div class="d-flex flex-column flex-lg-row gap-2">
-        <a class="btn btn-outline-urban" routerLink="/login" routerLinkActive="active-auth">
-          Entrar
-        </a>
-
-        <a class="btn btn-urban" routerLink="/signup" routerLinkActive="active-auth">
-          Criar conta
-        </a>
-      </div>
+        </div>
+      }
     </div>
   </div>
 </nav>
