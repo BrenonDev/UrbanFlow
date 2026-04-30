@@ -46,7 +46,19 @@
             <h2>Criar conta</h2>
             <p>Preencha os dados abaixo para iniciar sua jornada.</p>
 
-            <form>
+            <!-- Mensagens de Erro/Sucesso -->
+            @if (errorMessage()) {
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ errorMessage() }}
+              </div>
+            }
+            @if (successMessage()) {
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ successMessage() }}
+              </div>
+            }
+
+            <form (ngSubmit)="signup()">
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="name" class="form-label">Nome</label>
@@ -55,6 +67,10 @@
                     class="form-control"
                     id="name"
                     placeholder="Seu nome"
+                    [(ngModel)]="name"
+                    name="name"
+                    required
+                    [disabled]="loading()"
                   />
                 </div>
 
@@ -65,6 +81,9 @@
                     class="form-control"
                     id="city"
                     placeholder="Ex.: São Paulo"
+                    [(ngModel)]="city"
+                    name="city"
+                    [disabled]="loading()"
                   />
                 </div>
 
@@ -75,6 +94,10 @@
                     class="form-control"
                     id="email"
                     placeholder="seunome@email.com"
+                    [(ngModel)]="email"
+                    name="email"
+                    required
+                    [disabled]="loading()"
                   />
                 </div>
 
@@ -85,6 +108,10 @@
                     class="form-control"
                     id="password"
                     placeholder="Crie uma senha"
+                    [(ngModel)]="password"
+                    name="password"
+                    required
+                    [disabled]="loading()"
                   />
                 </div>
 
@@ -97,29 +124,49 @@
                     class="form-control"
                     id="confirmPassword"
                     placeholder="Repita a senha"
+                    [(ngModel)]="confirmPassword"
+                    name="confirmPassword"
+                    required
+                    [disabled]="loading()"
                   />
                 </div>
               </div>
 
               <div class="form-check mt-4">
-                <input class="form-check-input" type="checkbox" id="terms" />
+                <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  id="terms"
+                  [(ngModel)]="agreeTerms"
+                  name="agreeTerms"
+                  [disabled]="loading()"
+                />
                 <label class="form-check-label" for="terms">
                   Aceito os termos de uso e a política de privacidade.
                 </label>
               </div>
 
-              <button type="button" class="btn btn-urban w-100 mt-4">
-                Criar minha conta
+              <button 
+                type="submit" 
+                class="btn btn-urban w-100 mt-4"
+                [disabled]="loading()"
+              >
+                @if (loading()) {
+                  <span class="spinner-border spinner-border-sm me-2"></span>
+                  Criando conta...
+                } @else {
+                  Criar minha conta
+                }
               </button>
             </form>
 
             <div class="auth-footer">
               <span>Já possui conta?</span>
-              <a routerLink="/login">Entrar agora</a>
+              <a routerLink="/login" class="auth-link">Entrar agora</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-</main>
+<!-- Removido markup duplicado e fechamento extra de </main> -->

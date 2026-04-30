@@ -1,5 +1,3 @@
-<app-menu></app-menu>
-
 <main class="rewards-page">
   <div class="container">
     <section class="rewards-hero">
@@ -14,150 +12,60 @@
 
       <div class="points-card">
         <span>Saldo disponível</span>
-        <strong>1.240</strong>
+        <strong>{{ authService.currentUser()?.points || 0 }}</strong>
         <small>pontos Urban Flow</small>
       </div>
     </section>
 
     <section class="reward-categories">
-      <button type="button" class="category-pill active">Disponíveis</button>
-      <button type="button" class="category-pill">Transporte</button>
-      <button type="button" class="category-pill">Bike</button>
-      <button type="button" class="category-pill">Parceiros</button>
-      <button type="button" class="category-pill">Conquistas</button>
+      @for (category of categories; track category.value) {
+        <button 
+          type="button" 
+          class="category-pill"
+          [class.active]="selectedCategory() === category.value"
+          (click)="selectedCategory.set(category.value)"
+        >
+          {{ category.label }}
+        </button>
+      }
     </section>
 
     <section class="row g-4">
-      <div class="col-lg-4 col-md-6">
-        <article class="reward-card">
-          <div class="reward-image">🚲</div>
+      @for (reward of filteredRewards; track reward.id) {
+        <div class="col-lg-4 col-md-6">
+          <article class="reward-card" [class.unavailable]="!canRedeem(reward)">
+            <div class="reward-image">{{ reward.icon }}</div>
 
-          <div class="reward-content">
-            <span class="reward-tag">Bike compartilhada</span>
-            <h2>30 minutos gratuitos</h2>
-            <p>
-              Resgate um crédito para usar em sistemas parceiros de bicicletas
-              compartilhadas.
-            </p>
+            <div class="reward-content">
+              <span class="reward-tag">{{ reward.category }}</span>
+              <h2>{{ reward.title }}</h2>
+              <p>{{ reward.description }}</p>
 
-            <div class="reward-footer">
-              <strong>350 pts</strong>
-              <button type="button" class="btn btn-urban">
-                Resgatar
-              </button>
+              <div class="reward-footer">
+                <strong>{{ reward.cost }} pts</strong>
+                <button 
+                  type="button" 
+                  class="btn btn-urban"
+                  (click)="redeemReward(reward)"
+                  [disabled]="!canRedeem(reward)"
+                >
+                  @if (canRedeem(reward)) {
+                    Resgatar
+                  } @else {
+                    Pontos insuficientes
+                  }
+                </button>
+              </div>
             </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <article class="reward-card">
-          <div class="reward-image">🎫</div>
-
-          <div class="reward-content">
-            <span class="reward-tag">Transporte público</span>
-            <h2>Crédito de passagem</h2>
-            <p>
-              Use seus pontos para obter desconto em uma viagem de transporte
-              público.
-            </p>
-
-            <div class="reward-footer">
-              <strong>500 pts</strong>
-              <button type="button" class="btn btn-urban">
-                Resgatar
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <article class="reward-card">
-          <div class="reward-image">☕</div>
-
-          <div class="reward-content">
-            <span class="reward-tag">Parceiro local</span>
-            <h2>Desconto em cafeteria</h2>
-            <p>
-              Ganhe desconto em estabelecimentos parceiros próximos a estações e
-              ciclovias.
-            </p>
-
-            <div class="reward-footer">
-              <strong>420 pts</strong>
-              <button type="button" class="btn btn-urban">
-                Resgatar
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <article class="reward-card">
-          <div class="reward-image">🌱</div>
-
-          <div class="reward-content">
-            <span class="reward-tag">Impacto ambiental</span>
-            <h2>Selo de baixo carbono</h2>
-            <p>
-              Adicione um selo especial ao seu perfil por manter hábitos
-              sustentáveis.
-            </p>
-
-            <div class="reward-footer">
-              <strong>250 pts</strong>
-              <button type="button" class="btn btn-urban">
-                Resgatar
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <article class="reward-card locked">
-          <div class="reward-image">⚡</div>
-
-          <div class="reward-content">
-            <span class="reward-tag">Desafio premium</span>
-            <h2>Pacote XP dobrado</h2>
-            <p>
-              Ative um bônus temporário para dobrar XP em missões selecionadas.
-            </p>
-
-            <div class="reward-footer">
-              <strong>1.500 pts</strong>
-              <button type="button" class="btn btn-outline-urban" disabled>
-                Pontos insuficientes
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <article class="reward-card featured">
-          <div class="reward-image">🏆</div>
-
-          <div class="reward-content">
-            <span class="reward-tag light">Conquista especial</span>
-            <h2>Explorador Urbano</h2>
-            <p>
-              Desbloqueie uma conquista exclusiva ao completar uma sequência de
-              missões multimodais.
-            </p>
-
-            <div class="reward-footer">
-              <strong>900 pts</strong>
-              <button type="button" class="btn btn-light">
-                Desbloquear
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
+          </article>
+        </div>
+      }
     </section>
+
+    @if (filteredRewards.length === 0) {
+      <section class="empty-state">
+        <p>Nenhuma recompensa encontrada nesta categoria.</p>
+      </section>
+    }
   </div>
 </main>
