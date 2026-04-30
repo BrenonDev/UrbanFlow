@@ -1,59 +1,102 @@
 # UrbanFlow
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+UrbanFlow e uma aplicacao web de mobilidade urbana sustentavel com gamificacao. A plataforma incentiva usuarios a completarem missoes de deslocamento consciente, acumularem XP, subirem de nivel e resgatarem recompensas ligadas a transporte e parceiros urbanos.
 
-## Development server
+## Visao Geral
 
-To start a local development server, run:
+O projeto simula uma experiencia completa de usuario, com cadastro, login, painel de progresso, missoes, recompensas e configuracoes de perfil. A autenticacao e os dados do usuario sao armazenados localmente no navegador, tornando o app simples de executar e testar sem backend.
 
-```bash
-ng serve
+## Funcionalidades
+
+- Cadastro e login de usuarios
+- Rotas protegidas por autenticacao
+- Dashboard com XP, nivel, missoes concluidas e impacto estimado
+- Listagem e filtro de missoes urbanas
+- Conclusao de missoes com progresso e recompensa em XP
+- Catalogo de recompensas com saldo de pontos
+- Atualizacao de dados do perfil
+- Interface responsiva com Angular e Bootstrap
+
+## Tecnologias
+
+- Angular 21
+- TypeScript
+- Bootstrap 5
+- ng-bootstrap
+- RxJS
+- Vitest
+
+## Estrutura
+
+```text
+src/
+  app/
+    dashboard/   # Painel do usuario
+    login/       # Entrada na plataforma
+    signup/      # Cadastro de usuario
+    missions/    # Missoes urbanas
+    rewards/     # Recompensas
+    settings/    # Configuracoes do perfil
+    services/    # Autenticacao e guards
+    welcome/     # Tela inicial
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Como Executar
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Instale as dependencias:
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Inicie o servidor de desenvolvimento:
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+Acesse no navegador:
 
-To build the project run:
+```text
+http://localhost:4200
+```
+
+## Scripts Disponiveis
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Executa o app em modo de desenvolvimento.
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Gera a versao de producao em `dist/`.
 
 ```bash
-ng e2e
+npm test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Executa os testes configurados no projeto.
 
-## Additional Resources
+## Rotas Principais
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `/welcome` - apresentacao do UrbanFlow
+- `/signup` - criacao de conta
+- `/login` - acesso do usuario
+- `/dashboard` - painel de progresso
+- `/missions` - missoes sustentaveis
+- `/rewards` - recompensas disponiveis
+- `/settings` - configuracoes do perfil
+
+## Observacoes
+
+- O app utiliza `localStorage` para simular autenticacao e persistencia.
+- Nao ha integracao com backend nesta versao.
+- As recompensas, missoes e metricas sao dados simulados para demonstracao da experiencia.
+
+## Objetivo
+
+UrbanFlow foi desenvolvido como uma proposta de produto digital para tornar escolhas de mobilidade mais conscientes, acessiveis e recompensadoras por meio de progresso, desafios e beneficios.
